@@ -19,10 +19,10 @@ export const Register = () =>
             <Form.Group className="mb-3" controlId="formBasicAge">
                 <Form.Label>Age</Form.Label>
                 <Form.Control type="number" placeholder="Enter Age" />
-            </Form.Group>   
+            </Form.Group>
 
-            <Form.Group className='mb-3' controlId="formGridBloodGroup" >
-                <Form.Label column sm={2}>Blood Group</Form.Label>
+            <Form.Group as={Col} className='mb-3' controlId="formGridBloodGroup" >
+                <Form.Label >Blood Group</Form.Label>
                 <Form.Select defaultValue="Choose..." >
                     <option>Choose Blood Group</option>
                     <option value="A+ve">A +ve</option>
@@ -39,7 +39,7 @@ export const Register = () =>
             <fieldset>
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label as="legend" column sm={2}>
-                        Radios
+                        Gender
                     </Form.Label>
                     <Col sm={10}>
                         <Form.Check

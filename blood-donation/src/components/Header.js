@@ -1,7 +1,8 @@
 import React from "react";
+import { Navibar } from "./Navibar";
 
 export const Header = () => 
 
 <div>
-    <h1>Blood Donation Management System</h1>
+    <Navibar/>
 </div>
