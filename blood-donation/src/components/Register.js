@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 export const Register = () =>
 
@@ -104,5 +105,8 @@ export const Register = () =>
             <Button variant="success" type="submit">
                 Submit
             </Button>
+            <Link to="/login">
+                <Button variant="link">Already Registered ?</Button>
+            </Link>
         </Form>
     </div>

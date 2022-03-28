@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const Login = () =>
 
@@ -15,7 +16,10 @@ export const Login = () =>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <Button variant="primary" type="submit">
-                Submit
+                Login
             </Button>
+            <Link to="/register">
+                <Button variant="link">Not Registered ?</Button>
+            </Link>
         </Form>
     </div>
