@@ -19,10 +19,8 @@ export const Navibar = () => {
                         <NavDropdown.Item href="#action/3.2">Appointment for Blood Bank</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="/login">Donor Login</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.2">About Blood Donation</NavDropdown.Item>
                      </NavDropdown>
-                     <Nav.Link href="#deets">About Us</Nav.Link>
+                     <Nav.Link href="/about">About Us</Nav.Link>
                   </Nav>
                </Navbar.Collapse>
             </Container>
