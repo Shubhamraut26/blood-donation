@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 
 export const Register = () =>
 
-    <div>
-        <h1>Hello Register</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col">
+            
+        </div>
+        <div className="p-3 m-2 bg-secondary text-white col-7">
         <Form>
+        <h1>Registration</h1><br/>
             <Form.Group className="mb-3" controlId="formBasicFirstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter First Name" />
@@ -22,9 +27,9 @@ export const Register = () =>
                 <Form.Control type="number" placeholder="Enter Age" />
             </Form.Group>
 
-            <Form.Group as={Col} className='mb-3' controlId="formGridBloodGroup" >
-                <Form.Label >Blood Group</Form.Label>
-                <Form.Select defaultValue="Choose..." >
+            <Form.Group className='mb-3' controlId="formGridBloodGroup" >
+                <Form.Label>Blood Group</Form.Label>
+                <Form.Select class="col-8" defaultValue="Choose..." >
                     <option>Choose Blood Group</option>
                     <option value="A+ve">A +ve</option>
                     <option value="A-ve">A -ve</option>
@@ -77,7 +82,7 @@ export const Register = () =>
 
             <Form.Group className='mb-3' controlId="formGridState" >
                 <Form.Label column sm={2}>State</Form.Label>
-                <Form.Select defaultValue="Choose..." >
+                <Form.Select class="col-8" defaultValue="Choose..." >
                     <option>Choose State</option>
                     <option value="state1">State 1</option>
                     <option value="state2">State 2</option>
@@ -86,7 +91,7 @@ export const Register = () =>
 
             <Form.Group className='mb-3' controlId="formGridDistrict" >
                 <Form.Label column sm={2}>District</Form.Label>
-                <Form.Select defaultValue="Choose..." >
+                <Form.Select class="col-8" defaultValue="Choose..." >
                     <option>Choose District</option>
                     <option value="district1">District 1</option>
                     <option value="district2">District 2</option>
@@ -95,18 +100,23 @@ export const Register = () =>
 
             <Form.Group className='mb-3' controlId="formGridCity" >
                 <Form.Label column sm={2}>City</Form.Label>
-                <Form.Select defaultValue="Choose..." >
+                <Form.Select class="col-8" defaultValue="Choose..." >
                     <option>Choose City</option>
                     <option value="city1">City 1</option>
                     <option value="city2">City 2</option>
                 </Form.Select>
             </Form.Group>
 
-            <Button variant="success" type="submit">
+            <Button variant="primary" type="submit">
                 Submit
             </Button>
             <Link to="/login">
-                <Button variant="link">Already Registered ?</Button>
+                <Button className="ml-4" variant="danger">Already Registered ?</Button>
             </Link>
         </Form>
+        </div>
+        <div class="col">
+            
+        </div>
     </div>
+</div>
