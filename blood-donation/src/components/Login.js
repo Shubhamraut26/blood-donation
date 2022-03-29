@@ -10,7 +10,7 @@ export const Login = () =>
 
             </div>
             <div className="p-3 m-2 bg-secondary text-white col-5">
-                <Form>
+                <form>
                     <h1>Login</h1><br />
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
@@ -21,13 +21,13 @@ export const Login = () =>
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <button variant="primary" type="submit">
                         Login
-                    </Button>
+                    </button>
                     <Link to="/register">
-                        <Button className="ml-4" variant="danger">Not Registered ?</Button>
+                        <button className="ml-4" variant="danger">Not Registered ?</button>
                     </Link>
-                </Form>
+                </form>
             </div>
             <div className="col">
 
