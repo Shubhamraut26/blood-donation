@@ -1,122 +1,228 @@
-import React from 'react'
-import { Form, Button, Row, Col } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Fragment } from "react";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as yup from 'yup';
+import './Register.css';
 
-export const Register = () =>
+export const Register = () => {
 
-    <div class="container">
-    <div class="row">
-        <div class="col">
-            
-        </div>
-        <div className="p-3 m-2 bg-secondary text-white col-7">
-        <Form>
-        <h1>Registration</h1><br/>
-            <Form.Group className="mb-3" controlId="formBasicFirstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter First Name" />
-            </Form.Group>
+    const formInitialSchema = {
+      name: '',
+      email: '',
+      password: '',
+      dob:'',
+      blood:'',
+      gender:'',
+      mobile:'',
+      country:'',
+      state:'',
+      city:'',
+     
+  }
 
-            <Form.Group className="mb-3" controlId="formBasicLastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Last Name" />
-            </Form.Group>
+  const formValidationSchema = yup.object().shape({
+      name: yup.string().required('Name is required'),
+      email: yup.string().required('Email is required').email("Please enter Valid email"),
+      password: yup.string().required('Password is required'),
+      confirmPassword: yup.string().oneOf([yup.ref('password')], "Passwords don't match").required('Confirm Password is required'),
+      website: yup.string().required('Website is required'),
+      comment: yup.string().required('Comment is required'),
+      termsAndCond: yup.boolean().oneOf([true], "Terms and condition is required"),
+      dob: yup.string().required('dob is required'),
+      blood: yup.string().required('Blood-group is required'),
+      country: yup.string().required('Country is required'),
+      state: yup.string().required('State is required'),
+      city: yup.string().required('City is required'),
+      gender: yup.string().required('Gender is required'),
+      mobile: yup.string().required('Mobile is required'),
+      dob: yup.string().required('date of birth is required'),
+  });
 
-            <Form.Group className="mb-3" controlId="formBasicAge">
-                <Form.Label>Age</Form.Label>
-                <Form.Control type="number" placeholder="Enter Age" />
-            </Form.Group>
 
-            <Form.Group className='mb-3' controlId="formGridBloodGroup" >
-                <Form.Label>Blood Group</Form.Label>
-                <Form.Select class="col-8" defaultValue="Choose..." >
-                    <option>Choose Blood Group</option>
-                    <option value="A+ve">A +ve</option>
-                    <option value="A-ve">A -ve</option>
-                    <option value="B+ve">B +ve</option>
-                    <option value="B-ve">B -ve</option>
-                    <option value="AB+ve">AB +ve</option>
-                    <option value="AB-ve">AB -ve</option>
-                    <option value="O+ve">O +ve</option>
-                    <option value="O-ve">O -ve</option>
-                </Form.Select>
-            </Form.Group>
 
-            <fieldset>
-                <Form.Group as={Row} className="mb-3">
-                    <Form.Label as="legend" column sm={2}>
-                        Gender
-                    </Form.Label>
-                    <Col sm={10}>
-                        <Form.Check
-                            type="radio"
-                            label="Male"
-                            name="genderRadios"
-                            id="maleRadio"
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="Female"
-                            name="genderRadios"
-                            id="femaleRadio"
-                        />
-                        <Form.Check
-                            type="radio"
-                            label="Other"
-                            name="genderRadios"
-                            id="otherRadio"
-                        />
-                    </Col>
-                </Form.Group>
-            </fieldset>
+    const handleFormSubmit = (values) => {
+        console.log("Submitted values", values)
+    }
 
-            <Form.Group className="mb-3" controlId="formBasicMobile">
-                <Form.Label>Mobile</Form.Label>
-                <Form.Control type="number" placeholder="Enter Mobile Number" />
-            </Form.Group>
+    return (
+        <Fragment>
+          <div className="content">
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>E-Mail</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" />
-            </Form.Group>
+            <div className=" container-sm mt-1  " >
+               
 
-            <Form.Group className='mb-3' controlId="formGridState" >
-                <Form.Label column sm={2}>State</Form.Label>
-                <Form.Select class="col-8" defaultValue="Choose..." >
-                    <option>Choose State</option>
-                    <option value="state1">State 1</option>
-                    <option value="state2">State 2</option>
-                </Form.Select>
-            </Form.Group>
+                <div className="col-md-5 offset-md-2 card shadow p-3">
+                    <Formik initialValues={formInitialSchema}
+                        validationSchema={formValidationSchema}
+                        onSubmit={(values => handleFormSubmit(values))}>
+                        {({ values }) =>
+                            <Form>
+                               <div className="col-md-5">
+                             <center> <h1 className="text-center ">Register</h1></center> 
+          
+                </div>
+                                <div className="col-md-12 mt-3">
+                                    <Field type="text"
+                                        name="name"
+                                        placeholder="Enter your  Full Name"
+                                        className="form-control" />
 
-            <Form.Group className='mb-3' controlId="formGridDistrict" >
-                <Form.Label column sm={2}>District</Form.Label>
-                <Form.Select class="col-8" defaultValue="Choose..." >
-                    <option>Choose District</option>
-                    <option value="district1">District 1</option>
-                    <option value="district2">District 2</option>
-                </Form.Select>
-            </Form.Group>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="name" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field type="text"
+                                        name="email"
+                                        placeholder="Enter your Email"
+                                        className="form-control" />
+                                    <p className="text-danger">
+                                        <ErrorMessage name="email" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field type="date"
+                                        name="dob"
+                                        placeholder="Enter your age"
+                                        className="form-control" />
+                                    <p className="text-danger">
+                                        <ErrorMessage name="dob" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field component="select" name="gender"
+                                        className={"form-control"}>
+                                        <option value="" disabled>Please select your gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </Field>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="gender" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field component="select" name="blood"
+                                        className={"form-control"}>
+                                        <option value="0">Please select your blood-group</option>
+                                        <option value="1">A+</option>
+                                        <option value="2">A-</option>
+                                        <option value="3">B+</option>
+                                        <option value="4">B-</option>
+                                        <option value="5">O+</option>
+                                        <option value="6">O-</option>
+                                        <option value="7">AB+</option>
+                                        <option value="8">AB-</option>
+                                    </Field>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="blood" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field component="select" name="Country"
+                                        className={"form-control"}>
+                                        <option value="0">Please select your Country</option>
+                                        <option value="1">America</option>
+                                        <option value="2">Austrailiya</option>
+                                        
+    					                            <option value="3">Brazil</option>
+    					<option value="4">Bhutan</option>
+    					<option value="5">China</option>
+    					<option value="6">India</option>
+    					<option value="7">Pakistan</option>
+    					<option value="8">Sri-Lanka</option>
+                                    </Field>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="country" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field component="select" name="State"
+                                        className={"form-control"}>
+                                        <option value="0">Please select your State</option>
+                                        <option value="1">America</option>
+    					<option value="2">Austrailya</option>
+    					<option value="3">Brazil</option>
+    					<option value="4">Bhutan</option>
+    					<option value="5">China</option>
+    					<option value="6">India</option>
+    					<option value="7">Pakistan</option>
+    					<option value="8">Sri-Lanka</option>
+                                    </Field>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="state" />
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-4">
+                                    <Field component="select" name="State"
+                                        className={"form-control"}>
+                                        <option value="0">Please select your city</option>
+                                        <option value="1">America</option>
+    					<option value="2">Austrailya</option>
+    					<option value="3">Brazil</option>
+    					<option value="4">Bhutan</option>
+    					<option value="5">China</option>
+    					<option value="6">India</option>
+    					<option value="7">Pakistan</option>
+    					<option value="8">Sri-Lanka</option>
+                                    </Field>
+                                    <p className="text-danger">
+                                        <ErrorMessage name="city" />
+                                    </p>
+                                </div>
+                                
 
-            <Form.Group className='mb-3' controlId="formGridCity" >
-                <Form.Label column sm={2}>City</Form.Label>
-                <Form.Select class="col-8" defaultValue="Choose..." >
-                    <option>Choose City</option>
-                    <option value="city1">City 1</option>
-                    <option value="city2">City 2</option>
-                </Form.Select>
-            </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-            <Link to="/login">
-                <Button className="ml-4" variant="danger">Already Registered ?</Button>
-            </Link>
-        </Form>
-        </div>
-        <div class="col">
-            
-        </div>
-    </div>
-</div>
+                               
+
+
+                                <div className="col-md-12 mt-4">
+                                    <Field type="number"
+                                        name="password"
+                                        placeholder="Enter your mobile number"
+                                        className="form-control" />
+                                    <p className="text-danger">
+                                        <ErrorMessage name="mobile" />
+                                    </p>
+                                </div>
+
+                                <div className="col-md-12 mt-4">
+                                    <Field type="password"
+                                        name="Password"
+                                        placeholder="Enter your Password"
+                                        className="form-control" />
+                                    <p className="text-danger">
+                                        <ErrorMessage name="password" />
+                                    </p>
+                                </div>
+
+                               
+
+                               
+
+
+                                <div className="col-md-12 mt-4">
+                                  <center>
+                                    <button className="btn btn-primary btn-block "
+                                        type="submit"
+                                    >
+                                        Submit 
+                                    </button>
+                                    </center>
+                                </div>
+
+
+                            </Form>
+                        }
+
+                    </Formik>
+                </div>
+
+
+            </div>
+            </div>
+
+
+        </Fragment >
+
+    )
+}
+
